@@ -1,0 +1,10 @@
+1 .Set Up Two EC2 Instances:
+  Repeat steps 1 and 3 from the monolithic deployment to create two EC2 instances, one for WordPress and one for MySQL.
+2.Install WordPress and MySQL on Separate Instances:
+  Connect to each EC2 instance via SSH and follow the respective installation steps outlined in the monolithic deployment. Install WordPress on one instance and MySQL on the other.
+3.Configure Security Groups:
+  Create separate security groups for each EC2 instance, allowing inbound traffic according to their respective services (HTTP/HTTPS for WordPress and MySQL for the database).
+4.Configure WordPress:
+  Access the WordPress instance's public IP in a web browser to complete the installation.
+5.Create Welcome Page:
+  Log in to the WordPress dashboard and create the homepage as described in the monolithic deployment.
