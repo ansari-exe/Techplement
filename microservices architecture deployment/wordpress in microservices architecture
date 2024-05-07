@@ -1,0 +1,65 @@
+Install WordPress on EC2 Instance:
+Connect to the WordPress EC2 Instance:
+Use SSH to connect to the EC2 instance where you'll install WordPress.
+Install LAMP Stack:
+Update the package repository:
+sql
+Copy code
+sudo apt update
+Install Apache, MySQL, PHP, and other necessary packages:
+Copy code
+sudo apt install apache2 php mysql-server php-mysql
+sudo service apache2 restart
+Download and Extract WordPress:
+Navigate to Apache's web root directory:
+bash
+Copy code
+cd /var/www/html/
+Download the latest version of WordPress:
+arduino
+Copy code
+sudo wget -c http://wordpress.org/latest.tar.gz
+Extract the downloaded file:
+Copy code
+sudo tar -xzvf latest.tar.gz
+Move the WordPress files to the current directory:
+bash
+Copy code
+sudo mv wordpress/* .
+Set permissions:
+bash
+Copy code
+sudo chown -R www-data:www-data /var/www/html/
+sudo chmod -R 755 /var/www/html/
+Configure WordPress:
+Access your WordPress EC2 instance's public IP address in a web browser to complete the installation.
+Follow the on-screen instructions to set up WordPress, including providing the database details.
+Install MySQL on the Database EC2 Instance:
+Connect to the MySQL EC2 Instance:
+Use SSH to connect to the EC2 instance where you'll install MySQL.
+Install MySQL:
+Update the package repository:
+sql
+Copy code
+sudo apt update
+Install MySQL server:
+Copy code
+sudo apt install mysql-server
+Configure MySQL:
+During installation, you'll be prompted to set a root password for MySQL. Choose a secure password and remember it.
+Complete WordPress Configuration:
+Database Configuration:
+When prompted during the WordPress installation, enter the database details:
+Database Name: wordpress
+Username: root (MySQL root username)
+Password: (Enter the MySQL root password set during MySQL installation)
+Database Host: (Enter the private IP address of the MySQL EC2 instance)
+Complete WordPress Installation:
+Follow the on-screen instructions to complete the WordPress installation.
+Create Welcome Page:
+Log in to your WordPress admin dashboard.
+Go to Pages > Add New.
+Create your welcome page with the desired content.
+Publish the page.
+Access Your WordPress Site:
+Visit your WordPress site by entering the public IP address of the WordPress EC2 instance in a web browser.
