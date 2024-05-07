@@ -1,0 +1,80 @@
+Deploying WordPress on an EC2 Ubuntu instance in a microservices architecture typically involves setting up two EC2 instances: one for WordPress and one for the MySQL database. Here's a step-by-step guide:
+
+### Set Up Two EC2 Instances:
+
+1. **Launch EC2 Instances:**
+   - Log in to the AWS Management Console.
+   - Navigate to the EC2 service.
+   - Launch two new EC2 instances with the t2.micro instance type and Ubuntu AMI.
+
+2. **Configure Security Groups:**
+   - Create two separate security groups: one for WordPress and one for MySQL.
+   - For the WordPress security group, allow inbound traffic on ports 80 (HTTP) and 443 (HTTPS).
+   - For the MySQL security group, allow inbound traffic on port 3306 (MySQL).
+
+### Install WordPress on EC2 Instance:
+
+1. **Connect to the WordPress EC2 Instance:**
+   - Use SSH to connect to the EC2 instance where you'll install WordPress.
+
+2. **Install LAMP Stack:**
+   - Update the package repository:
+     ```
+     sudo apt update
+     ```
+   - Install Apache, MySQL, PHP, and other necessary packages:
+     ```
+     sudo apt install apache2 php mysql-server php-mysql
+     sudo service apache2 restart
+     ```
+
+3. **Download and Extract WordPress:**
+   - Navigate to Apache's web root directory:
+     ```
+     cd /var/www/html/
+     ```
+   - Download the latest version of WordPress:
+     ```
+     sudo wget -c http://wordpress.org/latest.tar.gz
+     ```
+   - Extract the downloaded file:
+     ```
+     sudo tar -xzvf latest.tar.gz
+     ```
+   - Move the WordPress files to the current directory:
+     ```
+     sudo mv wordpress/* .
+     ```
+   - Set permissions:
+     ```
+     sudo chown -R www-data:www-data /var/www/html/
+     sudo chmod -R 755 /var/www/html/
+     ```
+
+4. **Configure WordPress:**
+   - Access your WordPress EC2 instance's public IP address in a web browser to complete the installation.
+   - Follow the on-screen instructions to set up WordPress, including providing the database details.
+
+### Complete WordPress Configuration:
+
+1. **Database Configuration:**
+   - When prompted during the WordPress installation, enter the database details:
+     - Database Name: `wordpress`
+     - Username: `root` (MySQL root username)
+     - Password: (Enter the MySQL root password set during MySQL installation)
+     - Database Host: (Enter the private IP address of the MySQL EC2 instance)
+
+2. **Complete WordPress Installation:**
+   - Follow the on-screen instructions to complete the WordPress installation.
+
+3. **Create Welcome Page:**
+   - Log in to your WordPress admin dashboard.
+   - Go to Pages > Add New.
+   - Create your welcome page with the desired content.
+   - Publish the page.
+
+### Access Your WordPress Site:
+
+1. Visit your WordPress site by entering the public IP address of the WordPress EC2 instance in a web browser.
+
+That's it! You've now deployed WordPress on an EC2 Ubuntu instance in a microservices architecture.
