@@ -1,31 +1,31 @@
-Monolithic Architecture Deployment:
-Set Up EC2 Instance:
-Log in to the AWS Management Console.
-Navigate to the EC2 service.
-Launch a new EC2 instance with the t2.micro instance type and Ubuntu AMI.
-Install WordPress and MySQL:
-Connect to your EC2 instance via SSH using a terminal or SSH client.
-Update the package repository: sudo apt update.
-Install Apache, MySQL, PHP, and other necessary packages:
-Copy code
-sudo apt install apache2 php mysql-server php-mysql
-sudo service apache2 restart
-Download and extract WordPress:
-bash
-Copy code
-cd /var/www/html
-sudo wget -c http://wordpress.org/latest.tar.gz
-sudo tar -xzvf latest.tar.gz
-sudo mv wordpress/* .
-sudo chown -R www-data:www-data /var/www/html/
-sudo chmod -R 755 /var/www/html/
-Configure Security Group:
+## Monolithic Architecture Deployment:
+# Set Up EC2 Instance:
+- Log in to the AWS Management Console.
+- Navigate to the EC2 service.
+- Launch a new EC2 instance with the t2.micro instance type and Ubuntu AMI.
+# Install WordPress and MySQL:
+- Connect to your EC2 instance via SSH using a terminal or SSH client.
+- Update the package repository: sudo apt update.
+- Install Apache, MySQL, PHP, and other necessary packages:
+- Copy code
+- sudo apt install apache2 php mysql-server php-mysql
+- sudo service apache2 restart
+# Download and extract WordPress:
+- bash
+- Copy code
+- cd /var/www/html
+- sudo wget -c http://wordpress.org/latest.tar.gz
+- sudo tar -xzvf latest.tar.gz
+- sudo mv wordpress/* .
+- sudo chown -R www-data:www-data /var/www/html/
+- sudo chmod -R 755 /var/www/html/
+# Configure Security Group:
 Go to the EC2 dashboard and select the instance.
 Under the "Security" tab, click on "Security Groups".
 Create a new security group allowing inbound traffic on ports 80 (HTTP) and 443 (HTTPS) for WordPress, and port 3306 (MySQL) for the database.
-Configure WordPress:
+# Configure WordPress:
 Access your EC2 instance's public IP in a web browser to complete the WordPress installation.
 Follow the on-screen instructions to set up WordPress, including creating an admin account and configuring the database connection.
-Create Welcome Page:
+# Create Welcome Page:
 Log in to the WordPress dashboard.
-Create a new page with your desired content to serve as the homepage.
+# Create a new page with your desired content to serve as the homepage.
